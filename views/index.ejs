@@ -14,6 +14,25 @@
       #street-view {
         height: 100%;
       }
+
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: "Roboto", "sans-serif";
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #floating-panel {
+        margin-left: -100px;
+      }
+      
     </style>
     <script>
       let panorama;
@@ -31,7 +50,22 @@
     </script>
   </head>
   <body>
+
+    <div id="floating-panel">
+        <form action="/guess" method="post">
+            <div class="form-group">
+                <h3> What country are we in? </h3>
+                <input type="text" class="form-control" name="guess" id="guess" placeholder="Country" required> 
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guess">
+            </div>
+        </form>
+    </div>
+
     <div id="street-view"></div>
+
+    
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
