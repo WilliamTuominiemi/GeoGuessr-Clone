@@ -18,7 +18,7 @@
       #floating-panel {
         position: absolute;
         top: 10px;
-        left: 25%;
+        left: 5%;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -27,6 +27,8 @@
         font-family: "Roboto", "sans-serif";
         line-height: 30px;
         padding-left: 10px;
+        width: 15%;
+        height: 15%;
       }
 
       #floating-panel {
@@ -36,31 +38,47 @@
     </style>
     <script>
       let panorama;
+      var coordinates = [
+        { lat: 60.171001, lng: 24.939350 }, // Helsinki, Finland
+        { lat: 48.858093, lng: 2.294694 }, // Paris, France
+        { lat: 51.510020, lng: -0.134730 } // London, England
+      ]
+      
+
+      function wasgut() {
+        console.log('gut')
+      }
 
       function initialize() {
         panorama = new google.maps.StreetViewPanorama(
           document.getElementById("street-view"),
           {
-            position: { lat: 37.86926, lng: -122.254811 },
+            position: coordinates[Math.floor(Math.random() * (coordinates.length))],
             pov: { heading: 165, pitch: 0 },
             zoom: 1,
           }
         );
       }
+
+      
+    </script>
+    <script>
+      
+      
     </script>
   </head>
   <body>
 
     <div id="floating-panel">
-        <form action="/guess" method="post">
-            <div class="form-group">
-                <h3> What country are we in? </h3>
-                <input type="text" class="form-control" name="guess" id="guess" placeholder="Country" required> 
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Guess">
-            </div>
-        </form>
+      <form action="javascript:wasgut">
+        <div class="form-group">
+          <h3> What country are we in? </h3>
+          <input type="text" class="form-control" name="guess" id="guess" placeholder="Country" required> 
+        </div>
+        <div class="form-group">
+          <input id="submit" type="button" value="Guess" />
+        </div>
+      </form>
     </div>
 
     <div id="street-view"></div>
