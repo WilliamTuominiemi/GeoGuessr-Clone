@@ -37,9 +37,9 @@
       
     </style>
     <script>
-      let score = 0;
+      let score = 0
 
-      let panorama;
+      let panorama
       
       var places = [
           [{ lat: 60.171001, lng: 24.939350 }, {country: 'Finland'}], // Helsinki, Finland
@@ -60,14 +60,14 @@
       }
 
       function guess() {
-        var guess = window.prompt("Where are we? ");
+        var guess = window.prompt("Where are we? ")
         if(guess === country) {
-          score++;
-          alert("Correct! Current Score: " + score);
+          score++
+          alert("Correct! Current Score: " + score)
           reconfigure()
         } else {
           score = 0
-          alert("Incorrect! Current Score: " + score);
+          alert("Incorrect! Current Score: " + score)
           reconfigure()
         }
         
