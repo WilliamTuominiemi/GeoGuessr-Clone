@@ -38,22 +38,31 @@
     </style>
     <script>
       let panorama;
-      var coordinates = [
-        { lat: 60.171001, lng: 24.939350 }, // Helsinki, Finland
-        { lat: 48.858093, lng: 2.294694 }, // Paris, France
-        { lat: 51.510020, lng: -0.134730 } // London, England
+      var places = [
+        [{ lat: 60.171001, lng: 24.939350 }, {country: 'Finland'}], // Helsinki, Finland
+        [{ lat: 48.858093, lng: 2.294694 }, {country: 'France'}], // Paris, France
+        [{ lat: 51.510020, lng: -0.134730 }, {country: 'England'}] // London, England
       ]
       
+      let currentPlace = places[Math.floor(Math.random() * (places.length))]
+      let coordinates = currentPlace[0]
+      let country = currentPlace[1].country
 
-      function wasgut() {
-        console.log('gut')
+      function guess() {
+        var guess = window.prompt("Enter your name: ");
+        if(guess === country) {
+          alert("Correct: " + country);
+        } else {
+          alert("Incorrect: " + country);
+        }
+        
       }
 
       function initialize() {
         panorama = new google.maps.StreetViewPanorama(
           document.getElementById("street-view"),
           {
-            position: coordinates[Math.floor(Math.random() * (coordinates.length))],
+            position: coordinates,
             pov: { heading: 165, pitch: 0 },
             zoom: 1,
           }
@@ -70,15 +79,7 @@
   <body>
 
     <div id="floating-panel">
-      <form action="javascript:wasgut">
-        <div class="form-group">
-          <h3> What country are we in? </h3>
-          <input type="text" class="form-control" name="guess" id="guess" placeholder="Country" required> 
-        </div>
-        <div class="form-group">
-          <input id="submit" type="button" value="Guess" />
-        </div>
-      </form>
+      <button onclick="guess()">Guess</button>
     </div>
 
     <div id="street-view"></div>
