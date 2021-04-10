@@ -37,23 +37,40 @@
       
     </style>
     <script>
+      let score = 0;
+
       let panorama;
-      var places = [
-        [{ lat: 60.171001, lng: 24.939350 }, {country: 'Finland'}], // Helsinki, Finland
-        [{ lat: 48.858093, lng: 2.294694 }, {country: 'France'}], // Paris, France
-        [{ lat: 51.510020, lng: -0.134730 }, {country: 'England'}] // London, England
-      ]
       
+      var places = [
+          [{ lat: 60.171001, lng: 24.939350 }, {country: 'Finland'}], // Helsinki, Finland
+          [{ lat: 48.858093, lng: 2.294694 }, {country: 'France'}], // Paris, France
+          [{ lat: 51.510020, lng: -0.134730 }, {country: 'England'}] // London, England
+      ]
+        
       let currentPlace = places[Math.floor(Math.random() * (places.length))]
       let coordinates = currentPlace[0]
       let country = currentPlace[1].country
 
+      let reconfigure = () => { 
+        currentPlace = places[Math.floor(Math.random() * (places.length))]
+        coordinates = currentPlace[0]
+        country = currentPlace[1].country
+
+        initialize()
+      }
+
+      
+
       function guess() {
         var guess = window.prompt("Enter your name: ");
         if(guess === country) {
-          alert("Correct: " + country);
+          score++;
+          alert("Correct! Current Score: " + score);
+          reconfigure()
         } else {
-          alert("Incorrect: " + country);
+          score = 0
+          alert("Incorrect! Current Score: " + score);
+          reconfigure()
         }
         
       }
