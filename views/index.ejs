@@ -27,8 +27,8 @@
         font-family: "Roboto", "sans-serif";
         line-height: 30px;
         padding-left: 10px;
-        width: 15%;
-        height: 15%;
+        width: 20%;
+        height: 20%;
       }
 
       #floating-panel {
@@ -39,12 +39,14 @@
     <script>
       let score = 0
 
+
+
       let panorama
       
       var places = [
           [{ lat: 60.171001, lng: 24.939350 }, {country: 'Finland'}], // Helsinki, Finland
           [{ lat: 48.858093, lng: 2.294694 }, {country: 'France'}], // Paris, France
-          [{ lat: 51.510020, lng: -0.134730 }, {country: 'England'}] // London, England
+          [{ lat: 51.510020, lng: -0.134730 }, {country: 'Great Britain'}] // London, Great Britain
       ]
         
       let currentPlace = places[Math.floor(Math.random() * (places.length))]
@@ -52,6 +54,8 @@
       let country = currentPlace[1].country
 
       let reconfigure = () => { 
+        document.getElementById("score").innerHTML = "Your current score is: " + score;
+
         currentPlace = places[Math.floor(Math.random() * (places.length))]
         coordinates = currentPlace[0]
         country = currentPlace[1].country
@@ -94,6 +98,8 @@
   <body>
 
     <div id="floating-panel">
+      <h1> If you know where we are, make a guess!</h1>
+      <h2 id="score"></h2>
       <button onclick="guess()">Guess</button>
     </div>
 
