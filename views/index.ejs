@@ -69,7 +69,7 @@
       let country = currentPlace[1].country
 
       let reconfigure = () => { 
-        document.getElementById("score").innerHTML = "Your current score is: " + score;
+        document.getElementById("score").innerHTML = "Your current score is: " + score
 
         currentPlace = places[Math.floor(Math.random() * (places.length))]
         coordinates = currentPlace[0]
@@ -78,7 +78,7 @@
         initialize()
       }
 
-      function guess() {
+      const guess= () => {
         var guess = window.prompt("Where are we? ")
         if(guess === country) {
           score++
@@ -100,7 +100,7 @@
             pov: { heading: 165, pitch: 0 },
             zoom: 1,
           }
-        );
+        )
       }
      
     </script>
