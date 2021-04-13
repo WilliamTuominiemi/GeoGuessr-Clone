@@ -1,0 +1,44 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    width: 100px;
+    height: 25px;
+    color: white;
+    background-color: red;
+}
+
+img {
+    padding-top: 10px;
+}
+
+#street-view {
+    height: 100%;
+    /* Google inverts the colours if you don't have any billing set up.
+  We can go around this by adding a counter invert filter on top of the street view */
+    filter: invert(1);
+}
+
+#floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+    width: 20%;
+    height: 30%;
+}
+
+#floating-panel {
+    margin-left: -100px;
+}
